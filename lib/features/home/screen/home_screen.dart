@@ -34,14 +34,12 @@ class _HomeScreen extends StatelessWidget {
       listener: (BuildContext context, HomeState state) {},
       builder: (BuildContext context, HomeState state) => Scaffold(
         body: Container(
-          width: double.infinity,
-          color: Colors.blue,
-          child: state.isLoading
-              ? LoadingContainer()
-              : _HomeBody(
-                  state: state,
-                ),
-        ),
+            width: double.infinity,
+            color: Colors.blue,
+            child: AnimatedSwitcher(
+              duration: Duration(milliseconds: 500),
+              child: state.isLoading ? LoadingContainer() : _HomeBody(state: state),
+            )),
       ),
     );
   }
