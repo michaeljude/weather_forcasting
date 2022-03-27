@@ -11,7 +11,7 @@ class DetailsScreen extends StatelessWidget {
 
   final WeatherBaseResponseDto weatherBaseResponseDto;
 
-  static Route<dynamic> route({required WeatherBaseResponseDto weatherBaseResponseDto}) =>
+  static MaterialPageRoute<dynamic> route({required WeatherBaseResponseDto weatherBaseResponseDto}) =>
       MaterialPageRoute(builder: (BuildContext context) => DetailsScreen(weatherBaseResponseDto: weatherBaseResponseDto));
 
   @override
@@ -66,8 +66,11 @@ class DetailsScreen extends StatelessWidget {
               left: 200.w,
               right: 30.w,
               bottom: 200.h,
-              child: SvgPicture.network(
-                '${imageContentBaseUrl.replaceFirst('abbrv', weatherDto.weatherStateAbbr)}',
+              child: Hero(
+                tag: 'weather_states-${weatherDto.weatherStateAbbr}',
+                child: SvgPicture.network(
+                  '${imageContentBaseUrl.replaceFirst('abbrv', weatherDto.weatherStateAbbr)}',
+                ),
               ),
             ),
             Align(

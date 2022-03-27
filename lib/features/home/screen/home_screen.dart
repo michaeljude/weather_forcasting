@@ -169,10 +169,13 @@ class CarouselItem extends StatelessWidget {
               Expanded(
                 child: Align(
                   alignment: Alignment.center,
-                  child: SvgPicture.network(
-                    '${imageContentBaseUrl.replaceFirst('abbrv', abbrv)}',
-                    height: 80.h,
-                    fit: BoxFit.fitHeight,
+                  child: Hero(
+                    tag: 'weather_states-$abbrv',
+                    child: SvgPicture.network(
+                      '${imageContentBaseUrl.replaceFirst('abbrv', abbrv)}',
+                      height: 80.h,
+                      fit: BoxFit.fitHeight,
+                    ),
                   ),
                 ),
               ),
